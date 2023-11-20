@@ -23,7 +23,7 @@ def gauss_seidel(A, b, x0=None, tol=0.000000001, max_iter=1000):
 
       # Verificar convergencia comparando la norma del cambio en x con la tolerancia
       if np.linalg.norm(x - x_prev, ord=np.inf) < tol:
-          print(f"Convergencia alcanzada después de {k+1} iteraciones.")
+          print(f"Iteraciones: {k+1}")
           return x
 
   # Mensaje si el método no converge en el número máximo de iteraciones

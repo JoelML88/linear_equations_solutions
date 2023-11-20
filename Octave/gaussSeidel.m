@@ -2,7 +2,7 @@
 
 function x = gaussSeidel(A, b, x0, tol, max_iter)
 
-  disp("************GAUSS-SEIDEL***********");
+  disp("\n\n************GAUSS-SEIDEL***********");
     n = length(b);
     x = x0;
     iter = 0;

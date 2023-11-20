@@ -1,6 +1,6 @@
 function x = sor(A, b, x0, omega, tol, max_iter)
 
-  disp("************SOR***********");
+  disp("\n\n************SOR***********");
 
     n = length(b);
     x = x0;

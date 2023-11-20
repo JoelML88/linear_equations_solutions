@@ -21,12 +21,12 @@ max_iteraciones = 1000;
 % Iniciar el cronómetro
 tic;
   solucion = jacobi(A, b, x0, tolerancia, max_iteraciones);
+  % Detener el cronómetro y mostrar el tiempo transcurrido
+  tiempo_transcurrido = toc;
+  disp(["Tiempo de ejecución JACOBI:", num2str(tiempo_transcurrido), " segundos"]);
+
   disp("La solución JACOBI:");
   disp(solucion);
-% Detener el cronómetro y mostrar el tiempo transcurrido
-tiempo_transcurrido = toc;
-disp(["Tiempo de ejecución JACOBI:", num2str(tiempo_transcurrido), " segundos"]);
-
 
 
 x0 = zeros(size(b));

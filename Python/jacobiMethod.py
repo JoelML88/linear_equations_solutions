@@ -40,7 +40,7 @@ def jacobi(A, b, x0=None, tol=0.1, max_iter=1000):
 
         # Verificar convergencia comparando la norma del cambio en x con la tolerancia
         if np.linalg.norm(x - x_prev, ord=np.inf) < tol:
-            print(f"Convergencia alcanzada después de {k+1} iteraciones.")
+            print(f"Iteraciones: {k+1}")
             return x
 
         # Actualizar el vector de solución previa

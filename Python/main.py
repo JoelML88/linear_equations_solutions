@@ -57,20 +57,28 @@ max_iteraciones = 1000
 
 
 print("\n*******************************************")
+inicio = time.time()
 
 solution = jacobi(A, b,x0, tolerancia, max_iteraciones)
-print("Solución aproximada jacobi:", solution)
+fin = time.time()
+print("Tiempo de ejecución JACOBI: ",fin-inicio)
+
+print("Solución aproximada jacobi:\n", np.vstack(solution))
 
 
 
 print("\n*******************************************")
 # Ejemplo de uso Gauss-Seidel
 x0 = np.zeros(len(b))
+
 inicio = time.time()
 solution = gauss_seidel(A, b, x0, tolerancia, max_iteraciones)
-print("Solución aproximada gauss_seidel:", solution)
 fin = time.time()
-print("Tiempo con Recursivo2: ",fin-inicio)
+print("Tiempo de ejecución GAUSS: ",fin-inicio)
+
+print("Solución aproximada gauss_seidel:\n", np.vstack(solution))
+
+
 
 
 
@@ -81,7 +89,9 @@ x0 = np.zeros(len(b))
 inicio = time.time()
 solution = sor(A, b, x0, omega, tolerancia, max_iteraciones)
 fin = time.time()
-print("Solución aproximada SOR:", solution)
+print("Tiempo de ejecución SOR: ",fin-inicio)
+
+print("Solución aproximada SOR:\n", np.vstack(solution))
 
 
 

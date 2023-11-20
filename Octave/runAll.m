@@ -1,5 +1,14 @@
-A = [5,2, -3;2,10,-8;3,8,13];
-b = [1; 4; 7];
+A = [4, -1, 0, -1, 0, 0, 0, 0, 0;
+    -1, 4, -1, 0, -1, 0, 0, 0, 0;
+    0, -1, 4, 0, 0, -1, 0, 0, 0;
+    -1, 0, 0, 4, -1, 0, -1, 0, 0;
+    0, -1, 0, -1, 4, -1, 0, -1, 0;
+    0, 0, -1, 0, -1, 4, 0, 0, -1;
+    0, 0, 0, -1, 0, 0, 4, -1, 0;
+    0, 0, 0, 0, -1, 0, -1, 4, -1;
+    0, 0, 0, 0, 0, -1, 0, -1, 4];
+
+b = [150; 100; 150; 50; 0; 50; 50; 0; 50];
 
 % Suposición inicial para x
 x0 = zeros(size(b));
@@ -24,7 +33,7 @@ x0 = zeros(size(b));
 % Iniciar el cronómetro
 tic;
 % Resolver el sistema usando Gauss-Seidel
-solucion = gauss_seidel(A, b, x0, tolerancia, max_iteraciones);
+solucion = gaussSeidel(A, b, x0, tolerancia, max_iteraciones);
 
 % Detener el cronómetro y mostrar el tiempo transcurrido
 tiempo_transcurrido = toc;

@@ -25,11 +25,11 @@ http://blog.espol.edu.ec/analisisnumerico/metodo-con-matrices-triangulares-alu/
 """
 
 import numpy as np
+import time
 
 from jacobiMethod import *
 from  gaussSeidelMethod import gauss_seidel
 from sorMethod import sor
-from luMethod import *
 
 
 
@@ -66,10 +66,12 @@ print("Solución aproximada jacobi:", solution)
 
 print("\n*******************************************")
 # Ejemplo de uso Gauss-Seidel
+inicio = time.time()
 initial_guess = np.zeros(len(b))
 solution = gauss_seidel(A, b, x0=initial_guess)
 print("Solución aproximada gauss_seidel:", solution)
-
+fin = time.time()
+print("Tiempo con Recursivo2: ",fin-inicio)
 
 
 """

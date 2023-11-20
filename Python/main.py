@@ -42,6 +42,8 @@ A = np.array([[5, 2, -3],
 #ingresamos b
 b = np.array([1, 4, 7])
 
+initial_guess = np.zeros(len(b))
+
 
 """
 
@@ -67,7 +69,7 @@ print("Solución aproximada jacobi:", solution)
 print("\n*******************************************")
 # Ejemplo de uso Gauss-Seidel
 inicio = time.time()
-initial_guess = np.zeros(len(b))
+
 solution = gauss_seidel(A, b, x0=initial_guess)
 print("Solución aproximada gauss_seidel:", solution)
 fin = time.time()
@@ -76,16 +78,18 @@ print("Tiempo con Recursivo2: ",fin-inicio)
 
 """
 print("\n*******************************************")
-initial_guess = np.zeros(len(b))
+inicio = time.time()
 solution = jacobi2(A, b, x0=initial_guess)
+fin = time.time()
 print("Solución aproximada jacobi:", solution)
 
 
 
 print("\n*******************************************")
 #Ejemplo SOR
-initial_guess = np.zeros(len(b))
+inicio = time.time()
 solution = sor(A, b, x0=initial_guess)
+fin = time.time()
 print("Solución aproximada SOR:", solution)
 
 

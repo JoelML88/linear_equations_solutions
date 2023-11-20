@@ -25,11 +25,11 @@ http://blog.espol.edu.ec/analisisnumerico/metodo-con-matrices-triangulares-alu/
 """
 
 import numpy as np
+import time
 
 from jacobiMethod import *
 from  gaussSeidelMethod import gauss_seidel
 from sorMethod import sor
-from luMethod import *
 
 
 
@@ -41,6 +41,8 @@ A = np.array([[5, 2, -3],
 
 #ingresamos b
 b = np.array([1, 4, 7])
+
+initial_guess = np.zeros(len(b))
 
 
 """
@@ -66,33 +68,29 @@ print("Solución aproximada jacobi:", solution)
 
 print("\n*******************************************")
 # Ejemplo de uso Gauss-Seidel
-initial_guess = np.zeros(len(b))
+inicio = time.time()
+
 solution = gauss_seidel(A, b, x0=initial_guess)
 print("Solución aproximada gauss_seidel:", solution)
-
+fin = time.time()
+print("Tiempo con Recursivo2: ",fin-inicio)
 
 
 """
 print("\n*******************************************")
-initial_guess = np.zeros(len(b))
+inicio = time.time()
 solution = jacobi2(A, b, x0=initial_guess)
+fin = time.time()
 print("Solución aproximada jacobi:", solution)
 
 
 
 print("\n*******************************************")
 #Ejemplo SOR
-initial_guess = np.zeros(len(b))
+inicio = time.time()
 solution = sor(A, b, x0=initial_guess)
+fin = time.time()
 print("Solución aproximada SOR:", solution)
 
-
-
-print("\n*******************************************")
-# Realizar la descomposición LU
-L, U = lu_decomposition(A)
-# Resolver el sistema de ecuaciones lineales mediante la descomposición LU
-solution = solve_lu(L, U, b)
-print("Solución aproximada LU:", solution)
 
 """

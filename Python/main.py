@@ -35,12 +35,19 @@ from sorMethod import sor
 
 #Ingresamos una matriz diagonal Dominante
 
-A = np.array([[5, 2, -3],
-              [2, 10, -8],
-              [3, 8, 13]])
+A = np.array([[4, -1, 0, -1, 0, 0, 0, 0, 0],
+              [-1, 4, -1, 0, -1, 0, 0, 0, 0],
+              [0, -1, 4, 0, 0, -1, 0, 0, 0],
+              [-1, 0, 0, 4, -1, 0, -1, 0, 0],
+              [0, -1, 0, -1, 4, -1, 0, -1, 0],
+              [0, 0, -1, 0, -1, 4, 0, 0, -1],
+              [0, 0, 0, -1, 0, 0, 4, -1, 0],
+              [0, 0, 0, 0, -1, 0, -1, 4, -1],
+              [0, 0, 0, 0, 0, -1, 0, -1, 4],
+              ])
 
 #ingresamos b
-b = np.array([1, 4, 7])
+b = np.array([150, 100, 150, 50, 0, 50, 50, 0, 50])
 
 x0 = np.zeros(len(b))
 
@@ -58,8 +65,8 @@ print("Solución aproximada jacobi:", solution)
 
 print("\n*******************************************")
 # Ejemplo de uso Gauss-Seidel
+x0 = np.zeros(len(b))
 inicio = time.time()
-
 solution = gauss_seidel(A, b, x0, tolerancia, max_iteraciones)
 print("Solución aproximada gauss_seidel:", solution)
 fin = time.time()
@@ -69,7 +76,8 @@ print("Tiempo con Recursivo2: ",fin-inicio)
 
 print("\n*******************************************")
 #Ejemplo SOR
-omega=1.25
+omega=1.2
+x0 = np.zeros(len(b))
 inicio = time.time()
 solution = sor(A, b, x0, omega, tolerancia, max_iteraciones)
 fin = time.time()

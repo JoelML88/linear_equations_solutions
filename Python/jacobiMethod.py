@@ -19,25 +19,8 @@ def jacobi(A, b, x0, tol, max_iter):
    
     x = np.copy(x0)
 
-    # Bucle de iteraciones
-    for k in range(max_iter):
-         # Vector auxiliar para almacenar la solución previa
-        x_prev = np.copy(x)
-         # Iterar sobre cada ecuación en el sistema
-        for i in range(n):
-             # Calcular la suma de los términos que no involucran la variable actual
-            sigma = 0
-            for j in range(n):
-                if j != i:
-                    sigma += A[i, j] * x_prev[j]
-             # Calcular la nueva aproximación para la variable actual
-            x[i] = (b[i] - sigma) / A[i, i]
-        # Verificar convergencia comparando la norma del cambio en x con la tolerancia
-        if np.linalg.norm(x - x_prev, np.inf) < tol:
-            break
-    return x
 
-def jacobi2(A, b, x0=None, tol=0.1, max_iter=1000):
+def jacobi(A, b, x0=None, tol=0.1, max_iter=1000):
     # n es el tamaño del sistema
     n = len(b)
 

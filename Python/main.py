@@ -87,12 +87,4 @@ solution = sor(A, b, x0=initial_guess)
 print("Solución aproximada SOR:", solution)
 
 
-
-print("\n*******************************************")
-# Realizar la descomposición LU
-L, U = lu_decomposition(A)
-# Resolver el sistema de ecuaciones lineales mediante la descomposición LU
-solution = solve_lu(L, U, b)
-print("Solución aproximada LU:", solution)
-
 """

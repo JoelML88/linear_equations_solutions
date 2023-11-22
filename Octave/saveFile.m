@@ -5,7 +5,7 @@ function saveFile(filename, data)
         if fid == -1
             error(sprintf("No se pudo crear el archivo '%s'.", filename));
         else
-            fprintf(fid, "hora_test,algoritmo, tolerancia, max_iteraciones, tiempo_transcurrido,solucion\n");
+            fprintf(fid, "hora_test,algoritmo, tolerancia, max_iteraciones, tiempo_transcurrido,iteraciones,solucion\n");
             fclose(fid);
             disp(sprintf("Archivo '%s' creado exitosamente.", filename));
         end

@@ -20,12 +20,12 @@ max_iteraciones = 1000;
 
 % Iniciar el cronómetro
 tic;
-  solucion = jacobi(A, b, x0, tolerancia, max_iteraciones);
+  [solucion, it] = jacobi(A, b, x0, tolerancia, max_iteraciones);
   % Detener el cronómetro y mostrar el tiempo transcurrido
   tiempo_transcurrido = toc;
 
   %Escribimos log
-  toPrint = sprintf("%s,Jacobi,%s,%s,%s,%s \n",datestr(clock(), 'yyyy-mm-dd HH:MM:SS'), num2str(tolerancia), num2str(max_iteraciones), num2str(tiempo_transcurrido),sprintf('%d ', solucion));
+  toPrint = sprintf("%s,Jacobi,%s,%s,%s,%s,%s \n",datestr(clock(), 'yyyy-mm-dd HH:MM:SS'), num2str(tolerancia), num2str(max_iteraciones), num2str(tiempo_transcurrido),num2str(it),sprintf('%d ', solucion));
   archiveName = sprintf("Jacobi_%s.csv",datestr(now, 'dd.mm.yyyy'));
   saveFile(archiveName,toPrint);
 
@@ -40,13 +40,13 @@ x0 = zeros(size(b));
 % Iniciar el cronómetro
 tic;
 % Resolver el sistema usando Gauss-Seidel
-solucion = gaussSeidel(A, b, x0, tolerancia, max_iteraciones);
+[solucion, it] = gaussSeidel(A, b, x0, tolerancia, max_iteraciones);
 
 % Detener el cronómetro y mostrar el tiempo transcurrido
 tiempo_transcurrido = toc;
 
   %Escribimos log
-  toPrint = sprintf("%s,Gauss-Seidel,%s,%s,%s,%s \n",datestr(clock(), 'yyyy-mm-dd HH:MM:SS'), num2str(tolerancia), num2str(max_iteraciones), num2str(tiempo_transcurrido),sprintf('%d ', solucion));
+  toPrint = sprintf("%s,Gauss-Seidel,%s,%s,%s,%s,%s \n",datestr(clock(), 'yyyy-mm-dd HH:MM:SS'), num2str(tolerancia), num2str(max_iteraciones), num2str(tiempo_transcurrido),num2str(it),sprintf('%d ', solucion));
   archiveName = sprintf("Gauss-Seidel_%s.csv",datestr(now, 'dd.mm.yyyy'));
   saveFile(archiveName,toPrint);
 
@@ -60,12 +60,12 @@ omega = 1.2;
 x0 = zeros(size(b));
 % Iniciar el cronómetro
 tic;
-solucion = sor(A, b, x0, omega, tolerancia, max_iteraciones);
+[solucion, it] = sor(A, b, x0, omega, tolerancia, max_iteraciones);
 % Detener el cronómetro y mostrar el tiempo transcurrido
 tiempo_transcurrido = toc;
 
   %Escribimos log
-  toPrint = sprintf("%s,SOR,%s,%s,%s,%s \n",datestr(clock(), 'yyyy-mm-dd HH:MM:SS'), num2str(tolerancia), num2str(max_iteraciones), num2str(tiempo_transcurrido),sprintf('%d ', solucion));
+  toPrint = sprintf("%s,SOR,%s,%s,%s,%s,%s \n",datestr(clock(), 'yyyy-mm-dd HH:MM:SS'), num2str(tolerancia), num2str(max_iteraciones), num2str(tiempo_transcurrido),num2str(it),sprintf('%d ', solucion));
   archiveName = sprintf("SOR_%s.csv",datestr(now, 'dd.mm.yyyy'));
   saveFile(archiveName,toPrint);
 

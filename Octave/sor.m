@@ -1,4 +1,6 @@
-function x = sor(A, b, x0, omega, tol, max_iter)
+
+
+function [x,y] = sor(A, b, x0, omega, tol, max_iter)
 
   disp("\n\n************SOR***********");
 
@@ -20,11 +22,12 @@ function x = sor(A, b, x0, omega, tol, max_iter)
         if norm(x - x_prev, inf) < tol
           disp("Iteraciones:");
           disp(iter+1);
+          y=iter+1
             break;
         end
         iter += 1;
     end
-
+  y=iter+1
     disp("************END-SOR***********");
 
 end

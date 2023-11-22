@@ -1,14 +1,8 @@
 
-% Definir la matriz A y el vector b
-%A = [2 1 -1; -3 -1 2; -1 1 3];
-%b = [1; -1; 2];
 
+function x = gaussSeidel(A, b, x0, tol, max_iter)
 
-A = [5,2,-3; 2,10,-8; 3,8,13];
-b = [1; 4; 7];
-
-
-function x = gauss_seidel(A, b, x0, tol, max_iter)
+  disp("\n\n************GAUSS-SEIDEL***********");
     n = length(b);
     x = x0;
     iter = 0;
@@ -30,27 +24,8 @@ function x = gauss_seidel(A, b, x0, tol, max_iter)
         end
         iter += 1;
     end
+    disp("************END-GAUSS-SEIDEL***********");
 end
 
-% Suposición inicial para x
-x0 = zeros(size(b));
 
-% Definir la tolerancia y el número máximo de iteraciones
-tolerancia = 0.000000001;
-max_iteraciones = 1000;
-
-% Iniciar el cronómetro
-tic;
-
-% Resolver el sistema usando Gauss-Seidel
-solucion = gauss_seidel(A, b, x0, tolerancia, max_iteraciones);
-
-% Detener el cronómetro y mostrar el tiempo transcurrido
-tiempo_transcurrido = toc;
-disp(["Tiempo de ejecución:", num2str(tiempo_transcurrido), " segundos"]);
-
-
-% Mostrar la solución
-disp("La solución es:");
-disp(solucion);
 

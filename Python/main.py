@@ -28,52 +28,71 @@ import numpy as np
 import time
 
 from jacobiMethod import *
-from  gaussSeidelMethod import gauss_seidel
+from gaussSeidelMethod import gauss_seidel
 from sorMethod import sor
 
 
 
 #Ingresamos una matriz diagonal Dominante
 
-A = np.array([[5, 2, -3],
-              [2, 10, -8],
-              [3, 8, 13]])
+A = np.array([[4, -1, 0, -1, 0, 0, 0, 0, 0],
+              [-1, 4, -1, 0, -1, 0, 0, 0, 0],
+              [0, -1, 4, 0, 0, -1, 0, 0, 0],
+              [-1, 0, 0, 4, -1, 0, -1, 0, 0],
+              [0, -1, 0, -1, 4, -1, 0, -1, 0],
+              [0, 0, -1, 0, -1, 4, 0, 0, -1],
+              [0, 0, 0, -1, 0, 0, 4, -1, 0],
+              [0, 0, 0, 0, -1, 0, -1, 4, -1],
+              [0, 0, 0, 0, 0, -1, 0, -1, 4],
+              ])
 
 #ingresamos b
-b = np.array([1, 4, 7])
+b = np.array([150, 100, 150, 50, 0, 50, 50, 0, 50])
 
-initial_guess = np.zeros(len(b))
+x0 = np.zeros(len(b))
 
+tolerancia = 0.000000001
+max_iteraciones = 1000
 
-"""
-
-A = np.array([[1.5, 2, 1.5],
-              [1, 3, -1],
-              [1, 2, 3]])
-
-#ingresamos b
-b = np.array([0, -2, 2])
-
-1 2 3 |2
-1 3 -1|-2
-3 4 3 |0
 
 
 print("\n*******************************************")
-initial_guess = np.zeros(len(b))
-solution = jacobi(A, b,initial_guess, 0.000001, 1000)
-print("Solución aproximada jacobi:", solution)
+inicio = time.time()
 
-"""
+solution = jacobi(A, b,x0, tolerancia, max_iteraciones)
+fin = time.time()
+print("Tiempo de ejecución JACOBI: ",fin-inicio)
+
+print("Solución aproximada jacobi:\n", np.vstack(solution))
+
+
 
 print("\n*******************************************")
 # Ejemplo de uso Gauss-Seidel
-inicio = time.time()
+x0 = np.zeros(len(b))
 
-solution = gauss_seidel(A, b, x0=initial_guess)
-print("Solución aproximada gauss_seidel:", solution)
+inicio = time.time()
+solution = gauss_seidel(A, b, x0, tolerancia, max_iteraciones)
 fin = time.time()
-print("Tiempo con Recursivo2: ",fin-inicio)
+print("Tiempo de ejecución GAUSS: ",fin-inicio)
+
+print("Solución aproximada gauss_seidel:\n", np.vstack(solution))
+
+
+
+
+
+print("\n*******************************************")
+#Ejemplo SOR
+omega=1.2
+x0 = np.zeros(len(b))
+inicio = time.time()
+solution = sor(A, b, x0, omega, tolerancia, max_iteraciones)
+fin = time.time()
+print("Tiempo de ejecución SOR: ",fin-inicio)
+
+print("Solución aproximada SOR:\n", np.vstack(solution))
+
 
 
 """
@@ -85,12 +104,31 @@ print("Solución aproximada jacobi:", solution)
 
 
 
-print("\n*******************************************")
-#Ejemplo SOR
-inicio = time.time()
-solution = sor(A, b, x0=initial_guess)
-fin = time.time()
-print("Solución aproximada SOR:", solution)
 
+"""
+
+
+
+
+"""
+
+A = np.array([[5, 2, -3],
+              [2, 10, -8],
+              [3, 8, 13]])
+
+#ingresamos b
+b = np.array([1, 4, 7])
+
+
+A = np.array([[1.5, 2, 1.5],
+              [1, 3, -1],
+              [1, 2, 3]])
+
+#ingresamos b
+b = np.array([0, -2, 2])
+
+1 2 3 |2
+1 3 -1|-2
+3 4 3 |0
 
 """

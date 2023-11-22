@@ -16,7 +16,7 @@ x0 = zeros(size(b));
 
 % Definir la tolerancia y el número máximo de iteraciones
 tolerancia = 0.000000001;
-max_iteraciones = 1000
+max_iteraciones = 1000;
 
 % Iniciar el cronómetro
 tic;

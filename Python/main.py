@@ -30,6 +30,8 @@ import time
 from jacobiMethod import *
 from gaussSeidelMethod import gauss_seidel
 from sorMethod import sor
+from saveFile import save_file
+from datetime import datetime
 
 
 
@@ -55,13 +57,20 @@ tolerancia = 0.000000001
 max_iteraciones = 1000
 
 
-
 print("\n*******************************************")
 inicio = time.time()
 
 solution = jacobi(A, b,x0, tolerancia, max_iteraciones)
 fin = time.time()
-print("Tiempo de ejecución JACOBI: ",fin-inicio)
+
+#Escribimos log
+data_to_add = datetime.now().strftime('%Y-%m-%d %H:%M:%S')+",Jacobi,"+str(tolerancia)+","+str(max_iteraciones) +","+str(fin-inicio)+","+str(solution).replace("\n", "")+"\n"
+archiveName = "Jacobi_"+ datetime.now().strftime('%d.%m.%Y')+".csv"
+save_file(archiveName, data_to_add)
+
+
+
+print("Tiempo de ejecución JACOBI: Ini",inicio,"fin:",fin,"Resta: ",fin-inicio)
 
 print("Solución aproximada jacobi:\n", np.vstack(solution))
 
@@ -74,8 +83,14 @@ x0 = np.zeros(len(b))
 inicio = time.time()
 solution = gauss_seidel(A, b, x0, tolerancia, max_iteraciones)
 fin = time.time()
-print("Tiempo de ejecución GAUSS: ",fin-inicio)
 
+#Escribimos log
+data_to_add = datetime.now().strftime('%Y-%m-%d %H:%M:%S')+",gauss_seidel,"+str(tolerancia)+","+str(max_iteraciones) +","+str(fin-inicio)+","+str(solution).replace("\n", "")+"\n"
+archiveName = "gauss_seidel_"+ datetime.now().strftime('%d.%m.%Y')+".csv"
+save_file(archiveName, data_to_add)
+
+
+print("Tiempo de ejecución GAUSS: Ini",inicio,"fin:",fin,"Resta: ",fin-inicio)
 print("Solución aproximada gauss_seidel:\n", np.vstack(solution))
 
 
@@ -89,46 +104,12 @@ x0 = np.zeros(len(b))
 inicio = time.time()
 solution = sor(A, b, x0, omega, tolerancia, max_iteraciones)
 fin = time.time()
-print("Tiempo de ejecución SOR: ",fin-inicio)
 
+#Escribimos log
+data_to_add = datetime.now().strftime('%Y-%m-%d %H:%M:%S')+",SOR,"+str(tolerancia)+","+str(max_iteraciones) +","+str(fin-inicio)+","+str(solution).replace("\n", "")+"\n"
+archiveName = "SOR_"+ datetime.now().strftime('%d.%m.%Y')+".csv"
+save_file(archiveName, data_to_add)
+
+print("Tiempo de ejecución SOR: Ini",inicio,"fin:",fin,"Resta: ",fin-inicio)
 print("Solución aproximada SOR:\n", np.vstack(solution))
 
-
-
-"""
-print("\n*******************************************")
-inicio = time.time()
-solution = jacobi2(A, b, x0=initial_guess)
-fin = time.time()
-print("Solución aproximada jacobi:", solution)
-
-
-
-
-"""
-
-
-
-
-"""
-
-A = np.array([[5, 2, -3],
-              [2, 10, -8],
-              [3, 8, 13]])
-
-#ingresamos b
-b = np.array([1, 4, 7])
-
-
-A = np.array([[1.5, 2, 1.5],
-              [1, 3, -1],
-              [1, 2, 3]])
-
-#ingresamos b
-b = np.array([0, -2, 2])
-
-1 2 3 |2
-1 3 -1|-2
-3 4 3 |0
-
-"""

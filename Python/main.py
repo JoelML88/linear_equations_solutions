@@ -59,12 +59,11 @@ max_iteraciones = 1000
 
 print("\n*******************************************")
 inicio = time.time()
-
-solution = jacobi(A, b,x0, tolerancia, max_iteraciones)
+solution,iteraciones = jacobi(A, b,x0, tolerancia, max_iteraciones)
 fin = time.time()
 
 #Escribimos log
-data_to_add = datetime.now().strftime('%Y-%m-%d %H:%M:%S')+",Jacobi,"+str(tolerancia)+","+str(max_iteraciones) +","+str(fin-inicio)+","+str(solution).replace("\n", "")+"\n"
+data_to_add = datetime.now().strftime('%Y-%m-%d %H:%M:%S')+",Jacobi,"+str(tolerancia)+","+str(max_iteraciones) +","+str(fin-inicio)+","+str(iteraciones)+","+str(solution).replace("\n", "")+"\n"
 archiveName = "Jacobi_"+ datetime.now().strftime('%d.%m.%Y')+".csv"
 save_file(archiveName, data_to_add)
 
@@ -81,11 +80,11 @@ print("\n*******************************************")
 x0 = np.zeros(len(b))
 
 inicio = time.time()
-solution = gauss_seidel(A, b, x0, tolerancia, max_iteraciones)
+solution,iteraciones = gauss_seidel(A, b, x0, tolerancia, max_iteraciones)
 fin = time.time()
 
 #Escribimos log
-data_to_add = datetime.now().strftime('%Y-%m-%d %H:%M:%S')+",gauss_seidel,"+str(tolerancia)+","+str(max_iteraciones) +","+str(fin-inicio)+","+str(solution).replace("\n", "")+"\n"
+data_to_add = datetime.now().strftime('%Y-%m-%d %H:%M:%S')+",gauss_seidel,"+str(tolerancia)+","+str(max_iteraciones) +","+str(fin-inicio)+","+str(iteraciones)+","+str(solution).replace("\n", "")+"\n"
 archiveName = "gauss_seidel_"+ datetime.now().strftime('%d.%m.%Y')+".csv"
 save_file(archiveName, data_to_add)
 
@@ -102,11 +101,11 @@ print("\n*******************************************")
 omega=1.2
 x0 = np.zeros(len(b))
 inicio = time.time()
-solution = sor(A, b, x0, omega, tolerancia, max_iteraciones)
+solution,iteraciones = sor(A, b, x0, omega, tolerancia, max_iteraciones)
 fin = time.time()
 
 #Escribimos log
-data_to_add = datetime.now().strftime('%Y-%m-%d %H:%M:%S')+",SOR,"+str(tolerancia)+","+str(max_iteraciones) +","+str(fin-inicio)+","+str(solution).replace("\n", "")+"\n"
+data_to_add = datetime.now().strftime('%Y-%m-%d %H:%M:%S')+",SOR,"+str(tolerancia)+","+str(max_iteraciones) +","+str(fin-inicio)+","+str(iteraciones)+","+str(solution).replace("\n", "")+"\n"
 archiveName = "SOR_"+ datetime.now().strftime('%d.%m.%Y')+".csv"
 save_file(archiveName, data_to_add)
 

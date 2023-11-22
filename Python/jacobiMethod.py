@@ -1,6 +1,10 @@
 import numpy as np
 
-def jacobi(A, b, x0, tol, max_iter):
+    
+
+
+def jacobi(A, b, x0=None, tol=0.1, max_iter=1000):
+    
     """
     Método de Jacobi para resolver el sistema de ecuaciones lineales Ax=b.
 
@@ -14,13 +18,7 @@ def jacobi(A, b, x0, tol, max_iter):
     Devuelve:
     - x: Solución aproximada del sistema de ecuaciones.
     """
-    # n es el tamaño del sistema
-    n = len(b)
-   
-    x = np.copy(x0)
 
-
-def jacobi(A, b, x0=None, tol=0.1, max_iter=1000):
     # n es el tamaño del sistema
     n = len(b)
 

@@ -64,7 +64,7 @@ b = np.ones(50)
 x0 = np.zeros(len(b))
 
 tolerancia = 0.000000001
-max_iteraciones = 1000
+max_iteraciones = 10000
 
 
 print("\n*******************************************")

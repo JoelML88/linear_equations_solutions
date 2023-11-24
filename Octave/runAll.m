@@ -13,8 +13,7 @@ A = [4, -1, 0, -1, 0, 0, 0, 0, 0;
 
 b = [150; 100; 150; 50; 0; 50; 50; 0; 50];
 
-% Suposición inicial para x
-x0 = zeros(size(b));
+
 %}
 
 % Generar la matriz de Hilbert de tamaño 50x50
@@ -29,10 +28,12 @@ end
 % Vector de unos de tamaño 50
 b = ones(n, 1);
 
+% Suposición inicial para x
+x0 = zeros(size(b));
 
 % Definir la tolerancia y el número máximo de iteraciones
 tolerancia = 0.000000001;
-max_iteraciones = 1000;
+max_iteraciones = 10000;
 
 % Iniciar el cronómetro
 tic;

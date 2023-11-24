@@ -45,4 +45,4 @@ def jacobi(A, b, x0=None, tol=0.1, max_iter=1000):
 
     # Mensaje si el método no converge en el número máximo de iteraciones
     print("El método de Jacobi no convergió en el número máximo de iteraciones.")
-    return x,k
+    return x,k+1

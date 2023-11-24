@@ -34,7 +34,7 @@ from saveFile import save_file
 from datetime import datetime
 
 
-
+"""
 #Ingresamos una matriz diagonal Dominante
 
 A = np.array([[4, -1, 0, -1, 0, 0, 0, 0, 0],
@@ -50,6 +50,16 @@ A = np.array([[4, -1, 0, -1, 0, 0, 0, 0, 0],
 
 #ingresamos b
 b = np.array([150, 100, 150, 50, 0, 50, 50, 0, 50])
+
+
+"""
+
+# Matriz de Hilbert de tamaño 50x50
+A = np.array([[1 / (i + j + 1) for j in range(50)] for i in range(50)])
+
+# Vector de unos de tamaño 50
+b = np.ones(50)
+
 
 x0 = np.zeros(len(b))
 

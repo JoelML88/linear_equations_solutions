@@ -17,7 +17,7 @@ b = [150; 100; 150; 50; 0; 50; 50; 0; 50];
 %}
 
 % Generar la matriz de Hilbert de tamaño 50x50
-n = 50;
+n = 10;
 A = zeros(n, n);
 for i = 1:n
     for j = 1:n
@@ -32,7 +32,7 @@ b = ones(n, 1);
 x0 = zeros(size(b));
 
 % Definir la tolerancia y el número máximo de iteraciones
-tolerancia = 0.000000001;
+tolerancia = 0.1;
 max_iteraciones = 10000;
 
 % Iniciar el cronómetro

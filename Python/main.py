@@ -54,17 +54,29 @@ b = np.array([150, 100, 150, 50, 0, 50, 50, 0, 50])
 
 """
 
-# Matriz de Hilbert de tamaño 50x50
-A = np.array([[1 / (i + j + 1) for j in range(50)] for i in range(50)])
+# Tamaño de la matriz y del vector
+n = 50000
 
-# Vector de unos de tamaño 50
-b = np.ones(50)
+# Generar una matriz aleatoria
+A = np.random.rand(n, n)
+
+# Convertir la matriz en estrictamente diagonal dominante
+for i in range(n):
+    A[i, i] = np.sum(np.abs(A[i])) + np.random.uniform(1, 10)
+
+# Generar un vector aleatorio
+b = np.random.rand(n)
+
+print("\n************MATRIZ A******************")
+print(A)
+print("\n************VECTOR B*******************")
+print(b)
 
 
 x0 = np.zeros(len(b))
 
-tolerancia = 0.000000001
-max_iteraciones = 10000
+tolerancia = 0.0000000000001
+max_iteraciones = 100000
 
 
 print("\n*******************************************")

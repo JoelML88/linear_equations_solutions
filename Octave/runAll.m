@@ -13,26 +13,47 @@ A = [4, -1, 0, -1, 0, 0, 0, 0, 0;
 
 b = [150; 100; 150; 50; 0; 50; 50; 0; 50];
 
+% Tamaño de la matriz y del vector
+n = 50;
+
+% Generar una matriz aleatoria
+A = rand(n, n);
+
+% Convertir la matriz en estrictamente diagonal dominante
+for i = 1:n
+    A(i, i) = sum(abs(A(i, :))) + rand * 10;
+end
+
+% Generar un vector aleatorio
+b = rand(n, 1);
+
+
 
 %}
 
-% Generar la matriz de Hilbert de tamaño 50x50
-n = 10;
-A = zeros(n, n);
-for i = 1:n
-    for j = 1:n
-        A(i, j) = 1 / (i + j - 1);
-    end
-end
 
-% Vector de unos de tamaño 50
-b = ones(n, 1);
+A = [10,-1,2,0;
+    -1,11,-1,3;
+     2,-1,10,-1;
+     0,3,-1,8]
+
+ b = [6;25;-11;15]
+
+
+
+
+
+
+
+
+%disp(A);
+%disp(b);
 
 % Suposición inicial para x
 x0 = zeros(size(b));
 
 % Definir la tolerancia y el número máximo de iteraciones
-tolerancia = 0.1;
+tolerancia = 0.00001;
 max_iteraciones = 10000;
 
 % Iniciar el cronómetro
